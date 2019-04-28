@@ -1,10 +1,3 @@
-/*
- * @Author: Marcus Dantas
- * @Date: 2019-01-27 12:11:20
- * @Last Modified by: Marcus Dantas
- * @Last Modified time: 2019-02-03 22:00:20
- */
-
 import React, { Component } from "react";
 
 import Swal from "sweetalert2";
@@ -15,6 +8,7 @@ import ErrorBoundary from "screens/erros/errorBoundary.screen";
 
 import HeadPefilMenu from "components/menus/comum/headPerfil.menu";
 import MenuAluno from "components/menus/dashboard/aluno/menuAluno.menu";
+import MenuAdmin from "components/menus/dashboard/administracao/menuAdmin.menu";
 
 export default class TemplateSistema extends Component {
   constructor(props) {
@@ -66,9 +60,10 @@ export default class TemplateSistema extends Component {
             <MenuAluno />
             <div className="my-3 my-md-5">
               <div className="container">
-                <div className="page-header">
-                  <h1 className="page-title">Dashboard</h1>
-                </div>
+                <h1 className="page-title border rounded-top col-md-6 text-center bg-info mb-3 text-white">
+                  Cadastros
+                </h1>
+                <MenuAdmin />
                 {this.props.children}
               </div>
             </div>
