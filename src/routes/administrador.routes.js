@@ -1,10 +1,13 @@
 import exportRoutes from "util/routes/exportRoutes.util";
-import HomeAdministradorScreen from "screens/sistema/administracao/instituicoes.screen";
-
+import InstituicaoScreen from "screens/sistema/administracao/instituicoes.screen";
+/*{
+  path: "/sistema/administracao/",
+  component: HomeAdministracaoScreen
+}*/
 const routes = [
   {
-    path: "/sistema/administracao",
-    component: HomeAdministradorScreen
+    path: "/sistema/administracao/instituicao",
+    component: InstituicaoScreen
   }
 ];
 

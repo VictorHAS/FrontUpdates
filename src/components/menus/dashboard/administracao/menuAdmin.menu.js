@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class MenuAluno extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container d-flex">
         <div
           className="bg-light border list-inline-item rounded "
           id="sidebar-wrapper"
@@ -18,7 +18,7 @@ export default class MenuAluno extends Component {
               Usuários
             </Link>
             <Link
-              to="/sistema/administracao"
+              to="/sistema/administracao/instituicao"
               className="list-group-item list-group-item-action bg-light"
             >
               Insituições
@@ -37,9 +37,7 @@ export default class MenuAluno extends Component {
             </Link>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">{this.props.children}</div>
-        </div>
+        {this.props.children}
       </div>
     );
   }

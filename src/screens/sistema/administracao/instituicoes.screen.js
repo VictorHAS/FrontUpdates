@@ -6,7 +6,7 @@ import Insti from "components/ui/card/paginaInsti.component";
 
 export default class HomeAdministradorScreen extends Component {
   componentDidMount() {
-    document.title = "Sistema Administracao - Plataforma LOP";
+    document.title = "Sistema Administrativo - Plataforma LOP";
   }
 
   render() {
