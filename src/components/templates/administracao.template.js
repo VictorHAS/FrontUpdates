@@ -58,14 +58,9 @@ export default class TemplateSistema extends Component {
               </div>
             </div>
             <MenuAluno />
-            <div className="my-3 my-md-5">
+            <div className="my-3 my-md-5 ">
               <div className="container">
-                <h1 className="page-title border rounded-top col-md-6 text-center bg-info mb-3 text-white">
-                  Cadastros
-                </h1>
-                <MenuAdmin>
-                {this.props.children}
-                </MenuAdmin>
+                <MenuAdmin>{this.props.children}</MenuAdmin>
               </div>
             </div>
           </div>
