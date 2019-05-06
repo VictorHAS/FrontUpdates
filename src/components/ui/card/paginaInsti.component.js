@@ -16,7 +16,7 @@ export default class pagInstituição extends Component {
   };
   /* do back-end
   componentDidMount() {
-    fetch('https://todo-api-london.now.sh/lists', {
+    fetch('https://api/lists', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -39,7 +39,7 @@ export default class pagInstituição extends Component {
     event.preventDefault();
     const { listId, term } = this.state;
 
-    fetch('https://todo-api-london.now.sh/items', {
+    fetch('https://api/items', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -52,7 +52,7 @@ export default class pagInstituição extends Component {
       })
     })
     .then(() => {
-      return fetch(`https://todo-api-london.now.sh/lists/${listId}`, {
+      return fetch(`https://api/lists/${listId}`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
@@ -81,7 +81,7 @@ export default class pagInstituição extends Component {
   handleEnderecoChange = e => {
     this.setState({ newEndereco: e.target.value });
   };
-
+  //Rua,cep,numero,complemento
   render() {
     return (
       <div>
@@ -97,17 +97,31 @@ export default class pagInstituição extends Component {
               onChange={this.handleNameChange}
             />
           </div>
-          <div className="form-group ">
-            <label htmlFor="inputEndereco">Endereço</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputEndereco"
-              placeholder="Ex: rua cet, s/n, natal"
-              value={this.state.newEndereco}
-              onChange={this.handleEnderecoChange}
-            />
+          <div className="row">
+            <div className="form-group col-6">
+              <label htmlFor="inputEndereco">Endereço</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputEndereco"
+                placeholder="Ex: rua cet, s/n, natal"
+                value={this.state.newEndereco}
+                onChange={this.handleEnderecoChange}
+              />
+            </div>
+             <div className="form-group col-6">
+              <label htmlFor="inputEndereco">Cep</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputEndereco"
+                placeholder="Ex: 59000-00"
+                value={this.state.newEndereco}
+                onChange={this.handleEnderecoChange}
+              />
+            </div>
           </div>
+         
           <button type="submit" className="btn btn-primary mb-3 btn-sm">
             Incluir
           </button>

@@ -6,7 +6,7 @@ import InstituicaoScreen from "screens/sistema/administracao/instituicoes.screen
 }*/
 const routes = [
   {
-    path: "/sistema/administracao/instituicao",
+    path: "/sistema/administrador/instituicoes",
     component: InstituicaoScreen
   }
 ];

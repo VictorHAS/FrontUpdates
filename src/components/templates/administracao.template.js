@@ -7,8 +7,7 @@ import axios from "axios";
 import ErrorBoundary from "screens/erros/errorBoundary.screen";
 
 import HeadPefilMenu from "components/menus/comum/headPerfil.menu";
-import MenuAluno from "components/menus/dashboard/aluno/menuAluno.menu";
-import MenuAdmin from "components/menus/dashboard/administracao/menuAdmin.menu";
+import MenuAdministrador from "components/menus/dashboard/administrador/menuAdministrador.menu";
 
 export default class TemplateSistema extends Component {
   constructor(props) {
@@ -57,11 +56,9 @@ export default class TemplateSistema extends Component {
                 <HeadPefilMenu />
               </div>
             </div>
-            <MenuAluno />
+            <MenuAdministrador />
             <div className="my-3 my-md-5 ">
-              <div className="container">
-                <MenuAdmin>{this.props.children}</MenuAdmin>
-              </div>
+              <div className="container">{this.props.children}</div>
             </div>
           </div>
           <footer className="footer">
