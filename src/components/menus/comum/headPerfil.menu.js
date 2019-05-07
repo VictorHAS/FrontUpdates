@@ -31,13 +31,13 @@ export default class HeadPefilMenu extends Component {
                 className="avatar"
                 style={{
                   backgroundImage:
-                    "url(https://avatars1.githubusercontent.com/u/18246968?s=400&u=7a4633dba51fd94c701fc25219afb33123159471&v=4"
+                    "url(https://avatars1.githubusercontent.com/u/32372238?s=460&v=4)"
                 }}
               />
               <span className="ml-2 d-none d-lg-block">
-                <span className="text-default">Marcus Paulo Soares Dantas</span>
+                <span className="text-default">Victor Hermes Alves de Souza</span>
                 <small className="text-muted d-block mt-1">
-                  Aluno - 20190001014
+                  Aluno - 20180125640
                 </small>
               </span>
             </Link>

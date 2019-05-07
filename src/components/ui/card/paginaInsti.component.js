@@ -3,7 +3,7 @@ import List from "../List";
 
 export default class pagInstituição extends Component {
   state = {
-    inst: "",
+    nome: "",
     logradouro: "",
     cep: "59078970",
     numero: "",
@@ -16,69 +16,32 @@ export default class pagInstituição extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    /*const response = await api.post("", {
-      nome: this.state.newNome
-
-    });*/
   };
   componentDidMount() {
     this.searchWithCep();
   }
-  /* do back-end
-  componentDidMount() {
-    fetch('https://api/lists', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        list: {
-          name: 'my list'
-        }
-      })
-    })
-    .then((res) => res.json())
-    .then(( data ) => {
-      this.setState({
-        listId: data.list.id
-      });
-    });
-  }*/
-  /*enviar nova Instituição para o back-end
-  onSubmit = (event) => {
-    event.preventDefault();
-    const { listId, term } = this.state;
-
-    fetch('https://api/items', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        item: {
-          list_id: listId,
-          description: term
-        }
-      })
-    })
-    .then(() => {
-      return fetch(`https://api/lists/${listId}`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-        }
-      }).then((res) => res.json())
-    })
-    .then((data) => {
-      this.setState({
-        items: data.list.items.map(({ description }) => description)
-      })
-    });
+  /*
+  getInstituicoes(e) {
+    e.preventDefault();
   }*/
   onSubmit = event => {
     event.preventDefault();
+    const requestInfo = {
+      method: "POST",
+      body: JSON.stringify({
+        nome: this.state.nome,
+        localidade: this.state.localidade,
+        uf: this.state.uf
+      }),
+      headers: new Headers({
+        "Content-type": "application/json"
+      })
+    };
     this.setState({
-      items: [...this.state.items, this.state.inst + ", " + this.state.cep]
+      items: [
+        ...this.state.items,
+        this.state.nome + ", " + this.state.localidade + ", " + this.state.uf
+      ]
       //Inst, Cidade, Estado
     });
   };
@@ -104,17 +67,23 @@ export default class pagInstituição extends Component {
     this.setState({ cidade: e.target.value });
   };
   handleLocalidadeChange = e => {
-    this.setState({ cidade: e.target.value });
+    this.setState({ localidade: e.target.value });
   };
-  handleUfChange =e=>{
-    this.setState({uf: e.target.value});
-  }
+  handleUfChange = e => {
+    this.setState({ uf: e.target.value });
+  };
   searchWithCep = () => {
+    if (this.state.cep.length !== 8) {
+      return console.log("CEP tem quer ter 8 digitos EX:12345-678");
+    }
     fetch(`https://viacep.com.br/ws/${this.state.cep}/json`, {
       method: "GET"
     })
       .then(res => res.json())
       .then(data => {
+        if (data.erro === true) {
+          return console.log("CEP inválido");
+        }
         this.setState({
           logradouro: data.logradouro,
           numero: data.complemento,
@@ -122,14 +91,14 @@ export default class pagInstituição extends Component {
           uf: data.uf,
           localidade: data.localidade
         });
-      });
+      })
+      .catch(e => console.log(e));
   };
-  //Rua,cep,numero,complemento
   render() {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group ">
+          <div className="form-group">
             <label htmlFor="inputNome">Nome</label>
             <input
               type="text"
@@ -137,11 +106,11 @@ export default class pagInstituição extends Component {
               id="inputNome"
               placeholder="Nome da Instituição Ex: UFRN "
               value={this.state.nome}
-              onChange={this.handleNomeChange}
+              onChange={this.handleNameChange}
             />
           </div>
           <div className="row">
-            <div className="form-group col-3">
+            <div className="form-group col-5">
               <label htmlFor="inputEndereco">CEP</label>
               <div className="input-group">
                 <input
@@ -193,7 +162,7 @@ export default class pagInstituição extends Component {
                 type="text"
                 className="form-control"
                 id="inputEndereco"
-                placeholder="Ex: 66 ou s/n"
+                placeholder=""
                 value={this.state.complemento}
                 onChange={this.handleComplementoChange}
               />
