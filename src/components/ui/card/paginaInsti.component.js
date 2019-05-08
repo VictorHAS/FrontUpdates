@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import List from "../List";
-
+import Swal from "sweetalert2";
 export default class pagInstituição extends Component {
   state = {
     nome: "",
@@ -11,6 +11,7 @@ export default class pagInstituição extends Component {
     uf: "",
     localidade: "",
     bairro: "",
+    msg: "",
     items: []
   };
 
@@ -26,7 +27,13 @@ export default class pagInstituição extends Component {
   }*/
   onSubmit = event => {
     event.preventDefault();
-    const requestInfo = {
+    if (this.state.nome.length > 0) {
+      Swal.fire({
+        type: "success",
+        title: `Instituição cadastrada`,
+        confirmButtonText: "Voltar para o sistema"
+      });
+      /*const requestInfo = {
       method: "POST",
       body: JSON.stringify({
         nome: this.state.nome,
@@ -36,14 +43,21 @@ export default class pagInstituição extends Component {
       headers: new Headers({
         "Content-type": "application/json"
       })
-    };
-    this.setState({
-      items: [
-        ...this.state.items,
-        this.state.nome + ", " + this.state.localidade + ", " + this.state.uf
-      ]
-      //Inst, Cidade, Estado
-    });
+    };*/
+      this.setState({
+        items: [
+          ...this.state.items,
+          this.state.nome + ", " + this.state.localidade + ", " + this.state.uf
+        ]
+        //Inst, Cidade, Estado
+      });
+    }else{
+      Swal.fire({
+        type: "error",
+        title: `Campo instituição vazio`,
+        confirmButtonText: "Voltar para o sistema"
+      });
+    }
   };
   handleNameChange = e => {
     this.setState({ nome: e.target.value });
@@ -74,7 +88,13 @@ export default class pagInstituição extends Component {
   };
   searchWithCep = () => {
     if (this.state.cep.length !== 8) {
-      return console.log("CEP tem quer ter 8 digitos EX:12345-678");
+      Swal.fire({
+        type: "error",
+        title: `Error no cep: ${this.state.cep}`,
+        text: "CEP tem quer ter 8 digitos EX:12345-678",
+        confirmButtonText: "Voltar para o sistema"
+      });
+      return;
     }
     fetch(`https://viacep.com.br/ws/${this.state.cep}/json`, {
       method: "GET"
@@ -82,7 +102,13 @@ export default class pagInstituição extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.erro === true) {
-          return console.log("CEP inválido");
+          Swal.fire({
+            type: "error",
+            title: `Error no cep: ${this.state.cep}`,
+            text: "CEP não encontrado",
+            confirmButtonText: "Voltar para o sistema"
+          });
+          return;
         }
         this.setState({
           logradouro: data.logradouro,
