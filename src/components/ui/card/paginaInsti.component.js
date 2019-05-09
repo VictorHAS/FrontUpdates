@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import List from "../List";
 import Swal from "sweetalert2";
+let idqnt = 1;
 export default class pagInstituição extends Component {
   state = {
     nome: "",
@@ -14,17 +15,30 @@ export default class pagInstituição extends Component {
     msg: "",
     items: []
   };
-
   handleSubmit = async e => {
     e.preventDefault();
   };
   componentDidMount() {
     this.searchWithCep();
+    this.getInstituicoes();
   }
-  /*
-  getInstituicoes(e) {
-    e.preventDefault();
-  }*/
+  getInstituicoes = () => {
+    let dbfile = "http://localhost:3001/instituicoes";
+    fetch(dbfile)
+      .then(res => res.json())
+      .then(data => {
+        data.map(inst => {
+          return this.setState({
+            items: [
+              ...this.state.items,
+              inst.nome + ", " + inst.localidade + ", " + inst.uf
+            ]
+          });
+          idqnt++
+        });
+      });
+      console.log(idqnt)
+  };
   onSubmit = event => {
     event.preventDefault();
     if (this.state.nome.length > 0) {
@@ -33,25 +47,30 @@ export default class pagInstituição extends Component {
         title: `Instituição cadastrada`,
         confirmButtonText: "Voltar para o sistema"
       });
-      /*const requestInfo = {
-      method: "POST",
-      body: JSON.stringify({
-        nome: this.state.nome,
-        localidade: this.state.localidade,
-        uf: this.state.uf
-      }),
-      headers: new Headers({
-        "Content-type": "application/json"
-      })
-    };*/
-      this.setState({
-        items: [
-          ...this.state.items,
-          this.state.nome + ", " + this.state.localidade + ", " + this.state.uf
-        ]
-        //Inst, Cidade, Estado
-      });
-    }else{
+      const requestInfo = {
+        method: "POST",
+        body: JSON.stringify({
+          nome: this.state.nome,
+          logradouro: this.state.logradouro,
+          cep: this.state.cep,
+          numero: this.state.numero,
+          complemento: this.state.complemento,
+          uf: this.state.uf,
+          localidade: this.state.localidade,
+          bairro: this.state.bairro
+        }),
+        headers: new Headers({
+          "Content-type": "application/json"
+        })
+      };
+      fetch("http://localhost:3001/instituicoes/", requestInfo).then(
+        response => {
+          if (response.ok) {
+            response.text()
+          }
+        }
+      );
+    } else {
       Swal.fire({
         type: "error",
         title: `Campo instituição vazio`,
