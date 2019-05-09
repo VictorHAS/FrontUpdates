@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import List from "../List";
 import Swal from "sweetalert2";
-let idqnt = 1;
 export default class pagInstituição extends Component {
   state = {
     nome: "",
@@ -34,19 +33,13 @@ export default class pagInstituição extends Component {
               inst.nome + ", " + inst.localidade + ", " + inst.uf
             ]
           });
-          idqnt++
         });
-      });
-      console.log(idqnt)
+      })
+      .catch(e => console.log(e));
   };
   onSubmit = event => {
     event.preventDefault();
     if (this.state.nome.length > 0) {
-      Swal.fire({
-        type: "success",
-        title: `Instituição cadastrada`,
-        confirmButtonText: "Voltar para o sistema"
-      });
       const requestInfo = {
         method: "POST",
         body: JSON.stringify({
@@ -63,13 +56,30 @@ export default class pagInstituição extends Component {
           "Content-type": "application/json"
         })
       };
-      fetch("http://localhost:3001/instituicoes/", requestInfo).then(
-        response => {
+      fetch("http://localhost:3001/instituicoes/", requestInfo)
+        .then(response => {
           if (response.ok) {
-            response.text()
+            Swal.fire({
+              type: "success",
+              title: `Instituição cadastrada`,
+              confirmButtonText: "Voltar para o sistema"
+            });
+            this.setState({
+              items: [
+                ...this.state.items,
+                this.state.nome + ", " + this.state.localidade + ", " +this.state.uf
+              ]
+            });
           }
-        }
-      );
+        })
+        .catch(err => {
+          Swal.fire({
+            type: "error",
+            title: `Error ao cadastrar instituição`,
+            text: `error: ${err}`,
+            confirmButtonText: "Voltar para o sistema"
+          });
+        });
     } else {
       Swal.fire({
         type: "error",
@@ -141,7 +151,7 @@ export default class pagInstituição extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="container-fluid form-control">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="inputNome">Nome</label>

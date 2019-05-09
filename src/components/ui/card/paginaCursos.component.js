@@ -52,7 +52,7 @@ export default class pagCursos extends Component {
                     </div>
 
                     <div className="col-md-6">
-                        <select class="custom-select" id="" style={{marginTop:20}} value={this.state.inst} onChange={this.handleInstChange}>
+                        <select className="custom-select" id="" style={{marginTop:20}} value={this.state.inst} onChange={this.handleInstChange}>
                             <option selected>Selecione a instituição...</option>
                             <option value="UFRN">UFRN</option>
                             <option value="UNP">UNP</option>

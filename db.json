@@ -1,7 +1,7 @@
 {
   "instituicoes": [
     {
-      "nome": " UFRN",
+      "nome": "UFRN-ECT",
       "logradouro": "Avenida Senador Salgado Filho",
       "cep": "59078970",
       "numero": "3000",
@@ -9,40 +9,21 @@
       "uf": "RN",
       "localidade": "Natal",
       "bairro": "Lagoa Nova",
-      "id": "1"
+      "id": 1
     },
     {
-      "nome": " UFRN",
-      "logradouro": "Avenida Senador Salgado Filho",
-      "cep": "59078970",
-      "numero": "3000",
+      "nome": "LLL",
+      "logradouro": "Rua Novo Oriente",
+      "cep": "59147140",
+      "numero": "",
       "complemento": "",
       "uf": "RN",
-      "localidade": "Natal",
-      "bairro": "Lagoa Nova",
-      "id": "2"
-    },
-    {
-      "nome": " UFRN",
-      "logradouro": "Avenida Senador Salgado Filho",
-      "cep": "59078970",
-      "numero": "3000",
-      "complemento": "",
-      "uf": "RN",
-      "localidade": "Natal",
-      "bairro": "Lagoa Nova",
-      "id": "3"
-    },
-    {
-      "nome": " UFRN",
-      "logradouro": "Avenida Senador Salgado Filho",
-      "cep": "59078970",
-      "numero": "3000",
-      "complemento": "",
-      "uf": "RN",
-      "localidade": "Natal",
-      "bairro": "Lagoa Nova",
-      "id": "4"
+      "localidade": "Parnamirim",
+      "bairro": "Vida Nova",
+      "id": 2
     }
-  ]
+  ],
+  "users": [],
+  "cursos": [],
+  "disciplinas": []
 }

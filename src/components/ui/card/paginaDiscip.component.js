@@ -60,8 +60,8 @@ export default class pagDisciplinas extends Component {
                     </div>    
 
                     <div className="col-md-6">
-                        <select class="custom-select" id="" style={{marginTop:20}}>
-                            <option selected>Selecione a Curso...</option>
+                        <select className="custom-select" id="" style={{marginTop:20}}>
+                            <option>Selecione o Curso...</option>
                             <option value="1">Ciencia e Tecnologia</option>
                             <option value="2">Engenharia da ....</option>
                             <option value="3">Tecnologia da Informação</option>
