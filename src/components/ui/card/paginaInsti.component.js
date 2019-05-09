@@ -26,7 +26,7 @@ export default class pagInstituição extends Component {
   }*/
   onSubmit = event => {
     event.preventDefault();
-    const requestInfo = {
+    /*const requestInfo = {
       method: "POST",
       body: JSON.stringify({
         nome: this.state.nome,
@@ -36,7 +36,7 @@ export default class pagInstituição extends Component {
       headers: new Headers({
         "Content-type": "application/json"
       })
-    };
+    };*/
     this.setState({
       items: [
         ...this.state.items,
