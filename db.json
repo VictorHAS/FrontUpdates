@@ -1,0 +1,48 @@
+{
+  "instituicoes": [
+    {
+      "nome": " UFRN",
+      "logradouro": "Avenida Senador Salgado Filho",
+      "cep": "59078970",
+      "numero": "3000",
+      "complemento": "",
+      "uf": "RN",
+      "localidade": "Natal",
+      "bairro": "Lagoa Nova",
+      "id": "1"
+    },
+    {
+      "nome": " UFRN",
+      "logradouro": "Avenida Senador Salgado Filho",
+      "cep": "59078970",
+      "numero": "3000",
+      "complemento": "",
+      "uf": "RN",
+      "localidade": "Natal",
+      "bairro": "Lagoa Nova",
+      "id": "2"
+    },
+    {
+      "nome": " UFRN",
+      "logradouro": "Avenida Senador Salgado Filho",
+      "cep": "59078970",
+      "numero": "3000",
+      "complemento": "",
+      "uf": "RN",
+      "localidade": "Natal",
+      "bairro": "Lagoa Nova",
+      "id": "3"
+    },
+    {
+      "nome": " UFRN",
+      "logradouro": "Avenida Senador Salgado Filho",
+      "cep": "59078970",
+      "numero": "3000",
+      "complemento": "",
+      "uf": "RN",
+      "localidade": "Natal",
+      "bairro": "Lagoa Nova",
+      "id": "4"
+    }
+  ]
+}

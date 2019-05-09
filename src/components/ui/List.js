@@ -11,7 +11,7 @@ const List = props => (
           {item}
           <button
             type="button"
-            className="btn border-0 fa fa-wrench btn-outline-secondary"
+            className="btn border-0 rounded fa fa-wrench btn-outline-secondary"
           />
         </li>
       ))}
