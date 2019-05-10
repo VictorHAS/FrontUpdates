@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import List from "../List";
 import Swal from "sweetalert2";
+//http://localhost:3001/instituicoes?nome_like=^L pode ser usado para search
 export default class pagInstituição extends Component {
   state = {
     nome: "",
@@ -12,7 +13,8 @@ export default class pagInstituição extends Component {
     localidade: "",
     bairro: "",
     msg: "",
-    items: []
+    items: [],
+    search: []
   };
   handleSubmit = async e => {
     e.preventDefault();
@@ -67,7 +69,11 @@ export default class pagInstituição extends Component {
             this.setState({
               items: [
                 ...this.state.items,
-                this.state.nome + ", " + this.state.localidade + ", " +this.state.uf
+                this.state.nome +
+                  ", " +
+                  this.state.localidade +
+                  ", " +
+                  this.state.uf
               ]
             });
           }
@@ -115,6 +121,10 @@ export default class pagInstituição extends Component {
   handleUfChange = e => {
     this.setState({ uf: e.target.value });
   };
+  handleSearchChange = e => {
+    this.setState({ search: e.target.value.substr(0, 20) });
+  };
+  editInst = () => {};
   searchWithCep = () => {
     if (this.state.cep.length !== 8) {
       Swal.fire({
@@ -266,6 +276,7 @@ export default class pagInstituição extends Component {
               className="form-control py-2 mt-2 mb-2"
               type="search"
               placeholder="Natal"
+              onChange={this.handleSearchChange}
             />
             <span className="input-group-append mt-2 mb-2">
               <button className="btn btn-outline-secondary" type="button">
@@ -273,7 +284,7 @@ export default class pagInstituição extends Component {
               </button>
             </span>
           </div>
-          <List items={this.state.items} />
+          <List items={this.state.items} edit={this.editInst} />
         </form>
       </div>
     );
