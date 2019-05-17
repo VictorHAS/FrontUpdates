@@ -21,17 +21,16 @@ export default class LoginScreen extends Component {
         "Content-type": "application/json"
       })
     };
-    fetch("http://192.168.0.22:3001/auth/authenticate", requestInfo)
+    fetch("http://localhost:3001/auth/authenticate", requestInfo)
       .then(response => {
         if (response.ok) {
-          return response.text()
+          return console.log(response.text())
         } else {
           throw new Error("Invalid email or password");
         }
       })
       .then(token => {
         localStorage.setItem("auth-token", token);
-        console.log(token)
         this.setState({ redirect: true });
       })
       .catch(err => {

@@ -20,7 +20,6 @@ export default class pagInstituição extends Component {
     e.preventDefault();
   };
   componentDidMount() {
-    this.searchWithCep();
     this.getInstituicoes();
   }
   getInstituicoes = () => {
