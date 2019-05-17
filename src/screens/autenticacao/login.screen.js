@@ -5,8 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 export default class LoginScreen extends Component {
   state = {
     redirect: false,
-    msg: "",
-    showmodal: false
+    msg: ""
   };
   login(event) {
     event.preventDefault();
