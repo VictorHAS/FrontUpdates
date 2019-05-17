@@ -161,7 +161,7 @@ export default class pagInstituição extends Component {
   };
   render() {
     return (
-      <div className="container-fluid form-control">
+      <div className="container form-control">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="inputNome">Nome</label>
@@ -210,7 +210,7 @@ export default class pagInstituição extends Component {
                 onChange={this.handleLogradouroChange}
               />
             </div>
-            <div className="form-group col-2">
+            <div className="form-group col-sm-2">
               <label htmlFor="inputEndereco">Numero</label>
               <input
                 type="text"
@@ -256,7 +256,7 @@ export default class pagInstituição extends Component {
                 onChange={this.handleLocalidadeChange}
               />
             </div>
-            <div className="form-group col-2">
+            <div className="form-group col-sm-2">
               <label htmlFor="inputEndereco">Estado</label>
               <input
                 type="text"
